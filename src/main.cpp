@@ -5,6 +5,7 @@
 
 #include <bnbagent.h>
 #include <slsagent.h>
+#include <dpagent.h>
 #include <reader.h>
 #include <chrono>
 
@@ -75,6 +76,23 @@ void run_bnb(int n, std::vector<std::vector<double>> &inputMatrix, std::string f
     delete graph;
 }
 
+void run_dp(int n, std::vector<std::vector<double>> &inputMatrix, std::chrono::duration<double> time_limit, std::string filename)
+{
+    time_type start_time = std::chrono::system_clock::now();
+
+    DPAgent *agent = new DPAgent(n, inputMatrix);
+    double cost = agent->Find(start_time, time_limit);
+    std::chrono::duration<double> elapsed_seconds = agent->calculated_at - start_time;
+    // Output format: file_path, timeout,  time taken to caluclate result in ms, cost, number of iterations taken
+    std::cout << filename << ", ";
+    if (agent->timed_out)
+        std::cout << "timeout, ";
+    else
+        std::cout << ", ";
+    std::cout << elapsed_seconds.count() * 1000 << "ms, " << cost<< std::endl;
+    delete agent;
+}
+
 void run_sls(int n, std::vector<std::vector<double>> &inputMatrix, std::chrono::duration<double> time_limit, std::string filename)
 {
     time_type start_time = std::chrono::system_clock::now();
@@ -110,6 +128,8 @@ int main(int argc, char *argv[])
             run_bnb(n, inputMatrix, file_path, time_limit);
         else if (agant_name == "sls")
             run_sls(n, inputMatrix, time_limit, file_path);
+        else if (agant_name == "dp")
+            run_dp(n, inputMatrix, time_limit, file_path);
         else
             std::cout << "Please provide either bnb or sls as first argument." << std::endl;
 
