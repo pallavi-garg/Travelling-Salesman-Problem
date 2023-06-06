@@ -30,9 +30,9 @@
 All programs prints the last result only.
 
 Output Format:
-    1. BnB: file_path, timeout, time taken to caluclate result in ms, cost, number of expanded nodes, number of pruned nodes, path
-    2. SLS: file_path, timeout,  time taken to caluclate result in ms, cost, number of iterations taken
-    3. DP: file_path, timeout,  time taken to caluclate result in ms, cost
+   1. BnB: file_path, timeout, time taken to caluclate result in ms, cost, number of expanded nodes, number of pruned nodes, path
+   2. SLS: file_path, timeout,  time taken to caluclate result in ms, cost, number of iterations taken
+   3. DP: file_path, timeout,  time taken to caluclate result in ms, cost
     
 NOTE: if program did not timeout, then second column would be empty
 
