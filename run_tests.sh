@@ -19,3 +19,13 @@ do
     echo "sleeping for 2s"
     sleep 2s
 done
+
+## To run DP algorithm
+echo "DP" > result_dp.csv
+for file in tests/tsp-problem-*.txt
+do
+    echo $file
+    ./agent dp $file >> result_sls.csv
+    echo "sleeping for 2s"
+    sleep 2s
+done
