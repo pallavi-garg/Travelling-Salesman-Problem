@@ -15,13 +15,15 @@ For the solution, I am using three algorithms:
 ## Observations and Results
 
 ### Bnb (Anytime Property)
-If ran to completion (without any time limits), bnb finds the optimal path. On finding one solution, the algorithm does not stop. It keeps running the exhaustive search to find a path with lower cost. Main point to notice is that if the algorithm can find the optimal path in between, it will still keep searching to prove optimality as shown in the graph below. Here, the algorithm found the optimal solution in 5 seconds but finished in 2 minutes after searching through the entire tree, meaning expanding all possible paths.
+If ran to completion (without any time limits), bnb finds the optimal path. On finding one solution, the algorithm does not stop. It keeps running the exhaustive search to find a path with lower cost.
 The below graph is a snapshot of running the algorithm on an input with 30 cities. The algorithm calculates the optimal path for 30 cities in around 120 seconds and then spends rest of the time proving that this is optimal path by searching for a lower path.
 
+![bnb30](sls_bnb_test/bnb_30.png)
 
 ### SLS (Sub-optimal Results)
 The Simulated Annealing algorithm, deviates from the optimal path in some cases and returns the sub-optimal path as depicted in the graph below. The graph represents the comparison of the BnB algorithm with the Simulated Annealing algorithm for the same inputs. The reason is the randomness and no exhaustive search. The benefit is that it returns the good sub-optimal solution in very little time as compared to the time taken by the BnB algorithm for getting the optimal path.
 
+![sls](sls_bnb_test/bnb_sls.png)
 
 ### Dynamic Programming (Naive) Solution
 If ran to completion (without any time limits), this approach finds the optimal path. This apporach works good for smaller problems where number of cities is less than 24 cities. Although, it takes huge amount of memory as compared to other approaches.
@@ -35,6 +37,10 @@ Below graphs shows the **runtime comparison** of bnb and dp solution with 23 and
 ![23cities](dp_bnb_test/results/bnb_dp_23.png)
 
 ![24cities](dp_bnb_test/results/bnb_dp_24.png)
+
+![25cities](dp_bnb_test/results/bnb_25.png)
+
+For 25 cities, dp approach takes more than 7 minutes, so not capturing those comparisons as the difference is huge.
 
 
 Below images show the huge difference in **memory consumption** by these solutions. Please note that `agent` is the application name for this solution in both the screenshots.
