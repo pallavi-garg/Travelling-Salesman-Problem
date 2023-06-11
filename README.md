@@ -38,11 +38,6 @@ Below graphs shows the **runtime comparison** of bnb and dp solution with 23 and
 
 ![24cities](dp_bnb_test/results/bnb_dp_24.png)
 
-![25cities](dp_bnb_test/results/bnb_25.png)
-
-For 25 cities, dp approach takes more than 7 minutes, so not capturing those comparisons as the difference is huge.
-
-
 Below images show the huge difference in **memory consumption** by these solutions. Please note that `agent` is the application name for this solution in both the screenshots.
 
 **Bnb**
